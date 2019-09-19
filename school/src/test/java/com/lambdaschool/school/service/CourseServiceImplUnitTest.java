@@ -6,15 +6,16 @@ package com.lambdaschool.school.service;
 //import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 //import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import com.lambdaschool.school.SchoolApplication;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-//import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 //--Generated with test
 //@RunWith(Arquillian.class)
@@ -32,25 +33,29 @@ public class CourseServiceImplUnitTest
 
     @Autowired
     private CourseService courseService;
-    
-    @Before
-    public void setUp() throws Exception
+
+
+    @BeforeEach
+    public void setUp()
     {
+        MockitoAnnotations.initMocks(this);
     }
 
-    @After
-    public void tearDown() throws Exception
+    @AfterEach
+    public void tearDown()
     {
     }
 
     @Test
     public void findCourseById()
     {
+        assertEquals("Java Back End", courseService.findCourseById(4).getCoursename());
     }
 
     @Test
     public void findAll()
     {
+        assertEquals(6, courseService.findAll().size());
     }
 
     @Test

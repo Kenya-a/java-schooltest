@@ -17,9 +17,9 @@ public class CourseServiceImpl implements CourseService
     private CourseRepository courserepos;
 
     @Override
-    public Course findCourseById(long id) throws EntityNotFoundException
+    public Course findCourseById(long id)
     {
-        return courserepos.findById(id).orElseThrow(() -> new EntityNotFoundException(Long.toString(id)));
+        return courserepos.findCourseByCourseid(id);
     }
 
     @Override
